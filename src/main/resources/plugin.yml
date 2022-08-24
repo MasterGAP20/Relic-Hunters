@@ -1,0 +1,13 @@
+name: RelicsHunter
+version: '${project.version}'
+main: com.mastergap.relicshunter.Relicshunter
+api-version: 1.19
+
+commands:
+  structurescan:
+    description: test
+    usage: /structurescan <b1x> <b1y> <b1z> <b2x> <b2y> <b2z>
+
+  structureload:
+    description: test
+    usage: /structureload <sx> <sy> <sz> <structurename>
