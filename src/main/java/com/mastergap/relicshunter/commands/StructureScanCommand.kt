@@ -1,4 +1,4 @@
-package com.mastergap.relicshunter.misc
+package com.mastergap.relicshunter.commands
 
 import com.github.shynixn.structureblocklib.api.bukkit.StructureBlockLibApi
 import com.mastergap.relicshunter.Msg
@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin
 import java.io.File
 import java.util.logging.Level
 
-class StructureScanner(
+class StructureScanCommand(
     private var plugin: Plugin
 ) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {

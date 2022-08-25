@@ -11,3 +11,7 @@ commands:
   structureload:
     description: test
     usage: /structureload <sx> <sy> <sz> <structurename>
+
+  generatedungeon:
+    description: generates dungeon
+    usage: /generatedungeon <sx> <sy> <sz> <roomcount>

@@ -1,18 +1,15 @@
-package com.mastergap.relicshunter.misc
+package com.mastergap.relicshunter.commands
 
-import com.github.shynixn.structureblocklib.api.bukkit.StructureBlockLibApi
 import com.mastergap.relicshunter.Msg
-import org.bukkit.Bukkit
-import org.bukkit.Location
+import com.mastergap.relicshunter.misc.Util
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import java.util.logging.Level
 
 
-class StructureLoader(
+class StructureLoadCommand(
     private var plugin: Plugin
 ) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
@@ -31,18 +28,7 @@ class StructureLoader(
         val sz = args[2].toDouble()
         val name = args[3]
 
-        val path = plugin.dataFolder.toPath().resolve("$name")
-
-        StructureBlockLibApi.INSTANCE
-            .loadStructure(plugin)
-            .at(Location(Bukkit.getWorld("world"), sx, sy, sz))
-            .loadFromPath(path)
-            .onException { e: Throwable? ->
-                plugin.logger.log(Level.SEVERE, "Failed to load structure.", e)
-            }
-            .onResult { e: Void? ->
-                plugin.logger.log(Level.INFO, "Loaded structure '$name'.")
-            }
+        Util.loadStructure(plugin, player.world, sx, sy, sz, name)
 
         return true
     }

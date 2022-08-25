@@ -46,7 +46,7 @@ class CommandsTab(
             }
             if(args.size == 7){
                 val struc = ArrayList<String>()
-                struc.add("Structure Name")
+                struc.add("structureName")
                 return struc
             }
         }
@@ -89,6 +89,36 @@ class CommandsTab(
                 }
                 return names
             }
+        }
+        if(command.name == "generatedungeon"){
+            if(args.size == 1){
+                val cords = ArrayList<String>()
+                val player = sender as Player
+                val block = player.getTargetBlock(8)
+                if (block != null) {
+                    cords.add(block.x.toString())
+                }
+                return cords
+            }
+            if(args.size == 2){
+                val cords = ArrayList<String>()
+                val player = sender as Player
+                val block = player.getTargetBlock(8)
+                if (block != null) {
+                    cords.add(block.y.toString())
+                }
+                return cords
+            }
+            if(args.size == 3){
+                val cords = ArrayList<String>()
+                val player = sender as Player
+                val block = player.getTargetBlock(8)
+                if (block != null) {
+                    cords.add(block.z.toString())
+                }
+                return cords
+            }
+            if(args.size == 4) return arrayListOf<String>("roomCount")
         }
         return null
     }
