@@ -5,6 +5,7 @@ import com.mastergap.relicshunter.misc.CommandsTab
 import com.mastergap.relicshunter.misc.CreateData
 import com.mastergap.relicshunter.commands.StructureLoadCommand
 import com.mastergap.relicshunter.commands.StructureScanCommand
+import com.mastergap.relicshunter.relics.MasterSword
 import org.bukkit.plugin.java.JavaPlugin
 
 class Relicshunter : JavaPlugin() {
@@ -18,6 +19,7 @@ class Relicshunter : JavaPlugin() {
         getCommand("structureload")?.tabCompleter = CommandsTab(this)
         getCommand("generatedungeon")?.setExecutor(GenerateDungeonCommand(this))
         getCommand("generatedungeon")?.tabCompleter = CommandsTab(this)
+        server.pluginManager.registerEvents(MasterSword(),this)
     }
 
     override fun onDisable() {
