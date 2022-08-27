@@ -118,7 +118,8 @@ class CommandsTab(
                 }
                 return cords
             }
-            if(args.size == 4) return arrayListOf<String>("roomCount")
+            if(args.size == 4) return arrayListOf("roomCount")
+            if(args.size == 5) return arrayListOf("layout","jungle")
         }
         return null
     }

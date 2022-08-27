@@ -21,13 +21,17 @@ class GenerateDungeonCommand(
         }else if(args.size < 4){
             Msg.send(player, "Enter a room count")
             return true
+        }else if(args.size < 5){
+            Msg.send(player, "Enter a theme")
+            return true
         }
         var sx = args[0].toDouble()
         val sy = args[1].toDouble()
         var sz = args[2].toDouble()
         val roomCount = args[3].toInt()
+        val theme = args[4]
 
-        Generator.generate(sx, sy, sz, roomCount, "jungle", player.world, plugin, player)
+        Generator.generate(sx, sy, sz, roomCount, theme, player.world, plugin, player)
 
         return true
     }
