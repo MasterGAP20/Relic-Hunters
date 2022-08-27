@@ -27,7 +27,7 @@ class GenerateDungeonCommand(
         var sz = args[2].toDouble()
         val roomCount = args[3].toInt()
 
-        Generator.generate(sx, sy, sz, roomCount, "layout", player.world, plugin)
+        Generator.generate(sx, sy, sz, roomCount, "jungle", player.world, plugin, player)
 
         return true
     }
