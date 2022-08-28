@@ -15,3 +15,7 @@ commands:
   generatedungeon:
     description: generates dungeon
     usage: /generatedungeon <sx> <sy> <sz> <roomcount>
+
+  summonrelic:
+    description: test
+    usage: /summonrelic <relicname>

@@ -16,19 +16,28 @@ import java.util.*
 
 object Relics {
     var masterSword = ItemStack(Material.DIAMOND_SWORD,1)
+    var khopesh = ItemStack(Material.GOLDEN_SWORD,1)
+    var sharpStick = ItemStack(Material.WOODEN_SWORD,1)
+    var archangelSword = ItemStack(Material.NETHERITE_SWORD,1)
 
     fun init(){
-        createRelicSword("Master Sword", 10.0, 1521, 2.6, masterSword)
+        createRelicSword("Master Sword", 10.0, 1521, 2.6, "masterSword", masterSword)
+        createRelicSword("Khopesh",8.0,17,2.6, "khopesh", khopesh)
+        createRelicSword("Sharp Stick",25.0,58,2.6, "sharpSitck", sharpStick)
+        createRelicSword("Archangel's Blade",6.0,1981,2.6, "archangelBlade", archangelSword)
     }
 
-    private fun createRelicSword(name: String, dmg: Double, dura: Int, speed: Double, item: ItemStack){
+    private fun createRelicSword(name: String, dmg: Double, dura: Int, speed: Double, type: String, item: ItemStack){
         val relicMeta = item.itemMeta
         setDamage(dmg,relicMeta)
         setAtkSpeed(speed,relicMeta)
         relicMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS,ItemFlag.HIDE_ATTRIBUTES)
         relicMeta.displayName(Component.text(name))
-        relicMeta.persistentDataContainer.set(NamespacedKey("mastergap","weapons"), PersistentDataType.STRING, "masterSword")
+        relicMeta.persistentDataContainer.set(NamespacedKey("mastergap","weapons"), PersistentDataType.STRING, type)
         relicMeta.addEnchant(Enchantment.OXYGEN,1,true)
+        if(name == "Archangel's Blade"){
+            relicMeta.addEnchant(Enchantment.FIRE_ASPECT,1,true)
+        }
         (relicMeta as Damageable).damage = dura
         item.itemMeta = relicMeta
     }

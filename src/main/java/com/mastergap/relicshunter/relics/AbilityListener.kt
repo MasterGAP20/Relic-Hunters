@@ -14,6 +14,7 @@ object AbilityListener : org.bukkit.event.Listener{
             when(event.item?.itemMeta?.persistentDataContainer?.get(NamespacedKey("mastergap","weapons"),
                 PersistentDataType.STRING)){
                 "masterSword"  -> MasterSword().rightClickAction(event)
+                "archangelBlade" -> ArchangelBlade().rightClickAction(event)
             }
         }
     }

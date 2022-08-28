@@ -121,6 +121,16 @@ class CommandsTab(
             if(args.size == 4) return arrayListOf("roomCount")
             if(args.size == 5) return arrayListOf("layout","jungle")
         }
+        if(command.name == "summonrelic"){
+            if(args.size == 1){
+                val relics = ArrayList<String>()
+                relics.add("MasterSword")
+                relics.add("Khopesh")
+                relics.add("SharpStick")
+                relics.add("ArchangelBlade")
+                return relics
+            }
+        }
         return null
     }
 }
