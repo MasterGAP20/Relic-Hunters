@@ -10,28 +10,32 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
-import org.bukkit.scoreboard.Criteria
 import org.bukkit.scoreboard.DisplaySlot
 
 class CoinsScoreboard : Listener {
     @EventHandler
-    fun onJoin(event: PlayerJoinEvent){
+    fun onJoin(event: PlayerJoinEvent) {
+        map[event.player] = 0
         createBoard(event.player)
     }
 
-    companion object{
-        var totalcoins = 0
+    companion object {
+        var map = HashMap<Player, Int>()
 
-         fun createBoard(player: Player){
+        fun createBoard(player: Player) {
             val manager = Bukkit.getScoreboardManager()
             val board = manager.newScoreboard
-            val obj = board.registerNewObjective("CoinScoreboard", "DUMMY", Component.text("Coins", Style.style(
-                TextColor.fromHexString("#ffbf2b"), TextDecoration.ITALIC.withState(false))))
+            val obj = board.registerNewObjective(
+                "CoinScoreboard", "DUMMY", Component.text(
+                    "Coins", Style.style(
+                        TextColor.fromHexString("#ffbf2b"), TextDecoration.ITALIC.withState(false)
+                    )
+                )
+            )
             obj.displaySlot = DisplaySlot.SIDEBAR
-            val score = obj.getScore("${ChatColor.YELLOW} Coins: $totalcoins")
+            val score = obj.getScore("${ChatColor.YELLOW} Coins: ${map[player]}")
             score.score = 1
             player.scoreboard = board
         }
     }
-
 }

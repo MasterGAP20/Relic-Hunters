@@ -71,7 +71,7 @@ class StartGame : CommandExecutor {
 
     fun resetCoins(){
         for(player in Bukkit.getOnlinePlayers()){
-            CoinsScoreboard.totalcoins = 0
+            CoinsScoreboard.map[player] = 0
             CoinsScoreboard.createBoard(player)
         }
     }
