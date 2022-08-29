@@ -6,6 +6,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.ItemDespawnEvent
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.persistence.PersistentDataType
 
@@ -18,6 +19,14 @@ object AbilityListener : Listener {
                 "masterSword"  -> MasterSword().rightClickAction(event)
                 "archangelBlade" -> ArchangelBlade().rightClickAction(event)
             }
+        }
+    }
+    @EventHandler
+    fun move(event: PlayerMoveEvent) {
+        val item = event.player.inventory.itemInMainHand
+        when(item.itemMeta?.persistentDataContainer?.get(NamespacedKey("mastergap","weapons"),
+            PersistentDataType.STRING)){
+            "neptuneTrident"  -> NeptuneTrident().tickAction(event)
         }
     }
 

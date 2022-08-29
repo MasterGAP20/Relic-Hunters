@@ -133,6 +133,7 @@ class CommandsTab(
                 relics.add("SharpStick")
                 relics.add("ArchangelBlade")
                 relics.add("CoolLookingRock")
+                relics.add("NeptuneTrident")
                 return relics
             }
         }
