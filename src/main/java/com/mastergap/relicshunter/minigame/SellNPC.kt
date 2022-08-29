@@ -27,7 +27,7 @@ class SellNPC : Listener {
                 CoinsScoreboard.totalcoins += value
                 CoinsScoreboard.createBoard(player)
                 item.subtract()
-                Msg.send(player,"Sold for $value coins")
+                Msg.send(player,"${ChatColor.GREEN}Sold for $value coins")
             }
         }
 

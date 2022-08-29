@@ -1,6 +1,9 @@
 package com.mastergap.relicshunter.commands
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.Style
+import net.kyori.adventure.text.format.TextColor
+import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Bukkit
 import org.bukkit.Effect
 import org.bukkit.command.Command
@@ -19,8 +22,9 @@ class SpawnSeller : CommandExecutor{
         val location = player.location
 
         val seller = player.world.spawnEntity(location,EntityType.VILLAGER) as LivingEntity
-        seller.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,Int.MAX_VALUE,50))
-        seller.customName(Component.text("Relic Expert"))
+        seller.isInvulnerable = true
+        seller.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20000000,255))
+        seller.customName(Component.text("Relic Expert", Style.style(TextColor.fromHexString("#ffbf2b"), TextDecoration.ITALIC.withState(false))))
         return true
     }
 }
