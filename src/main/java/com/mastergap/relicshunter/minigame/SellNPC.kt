@@ -58,7 +58,7 @@ class SellNPC : Listener {
                 }
             }
         }
-        if(entity.scoreboardTags.contains("surface")) { player.teleport(Location(player.world,0.5,3.0,-0.5)) }
+        if(entity.scoreboardTags.contains("surface")) { player.teleport(Location(player.world,0.5,3.0,0.5)) }
     }
 
 }
