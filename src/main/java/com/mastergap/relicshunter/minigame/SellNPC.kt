@@ -24,7 +24,7 @@ class SellNPC : Listener {
         if(entity.scoreboardTags.contains("seller")){
             val item = player.inventory.itemInMainHand
             if(item.itemMeta?.persistentDataContainer?.has(NamespacedKey("mastergap","weapons")) == true){
-                val value = (item.type.maxDurability-item.durability) * 100
+                val value = (item.type.maxDurability-item.durability) * 10
                 CoinsScoreboard.map[player] = CoinsScoreboard.map[player]!! + value
                 CoinsScoreboard.createBoard(player)
                 item.subtract()

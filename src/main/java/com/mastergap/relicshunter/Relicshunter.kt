@@ -2,6 +2,7 @@ package com.mastergap.relicshunter
 
 import com.mastergap.relicshunter.commands.*
 import com.mastergap.relicshunter.minigame.CoinsScoreboard
+import com.mastergap.relicshunter.minigame.EndGame
 import com.mastergap.relicshunter.minigame.SellNPC
 import com.mastergap.relicshunter.minigame.StartGame
 import com.mastergap.relicshunter.misc.CommandsTab
@@ -35,6 +36,7 @@ class Relicshunter : JavaPlugin() {
         getCommand("spawnreturn")?.setExecutor(SpawnReturn())
         getCommand("spawnsurface")?.setExecutor(SpawnSurface())
         getCommand("starthunt")?.setExecutor(StartGame())
+        getCommand("endhunt")?.setExecutor(EndGame())
     }
 
     override fun onDisable() {
