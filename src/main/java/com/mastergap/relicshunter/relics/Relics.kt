@@ -64,6 +64,9 @@ object Relics {
         if(name == "Archangel's Blade"){
             relicMeta.addEnchant(Enchantment.FIRE_ASPECT,1,true)
         }
+        if(name == "Neptune's Trident"){
+            relicMeta.addEnchant(Enchantment.LOYALTY,3,true)
+        }
         (relicMeta as Damageable).damage = item.type.maxDurability-uses
         item.itemMeta = relicMeta
     }

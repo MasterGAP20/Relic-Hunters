@@ -22,12 +22,12 @@ class ArchangelBlade {
                 if(!entities.isEmpty()){
                     val victim = entities.elementAt(0)
                     victim.fireTicks += 15
-                    if((itemMeta as Damageable).damage <= 2031){
+                    if((itemMeta as Damageable).damage <= item.type.maxDurability){
                         itemMeta.damage += 1
                         item.itemMeta = itemMeta
                         return
                     }
-                    if(itemMeta.damage >= 2031){
+                    if(item.type.maxDurability-itemMeta.damage<=0){
                         item.subtract()
                     }
                 }

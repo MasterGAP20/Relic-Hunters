@@ -24,12 +24,12 @@ class MasterSword{
                 if(!entities.isEmpty()){
                     val victim = entities.elementAt(0)
                     victim.damage(8.0)
-                    if((itemMeta as Damageable).damage <= 1559){
-                        itemMeta.damage += 2
+                    if((itemMeta as Damageable).damage <= item.type.maxDurability){
+                        itemMeta.damage += 1
                         item.itemMeta = itemMeta
                         return
                     }
-                    if(itemMeta.damage >= 1559){
+                    if(item.type.maxDurability-itemMeta.damage<=0){
                         item.subtract()
                     }
                 }
