@@ -8,6 +8,7 @@ import com.mastergap.relicshunter.minigame.SellNPC
 import com.mastergap.relicshunter.minigame.StartGame
 import com.mastergap.relicshunter.misc.CommandsTab
 import com.mastergap.relicshunter.misc.CreateData
+import com.mastergap.relicshunter.misc.DamageListener
 import com.mastergap.relicshunter.relics.AbilityListener
 import com.mastergap.relicshunter.relics.Relics
 import org.bukkit.plugin.java.JavaPlugin
@@ -22,6 +23,7 @@ class Relicshunter : JavaPlugin() {
         server.pluginManager.registerEvents(SellNPC(),this)
         server.pluginManager.registerEvents(CoinsScoreboard(),this)
         server.pluginManager.registerEvents(BreadListener,this)
+        server.pluginManager.registerEvents(DamageListener,this)
         Relics.init()
     }
 

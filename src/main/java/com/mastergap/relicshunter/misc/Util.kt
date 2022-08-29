@@ -1,9 +1,15 @@
 package com.mastergap.relicshunter.misc
 
+import com.fastasyncworldedit.core.configuration.Settings.EXTENT
 import com.fastasyncworldedit.core.extent.NullExtent
+import com.fastasyncworldedit.core.extent.PassthroughExtent
 import com.github.shynixn.structureblocklib.api.bukkit.StructureBlockLibApi
 import com.mastergap.relicshunter.relics.Relics
+import com.sk89q.worldedit.EditSession
+import com.sk89q.worldedit.WorldEdit
+import com.sk89q.worldedit.bukkit.BukkitAdapter
 import com.sk89q.worldedit.bukkit.BukkitWorld
+import com.sk89q.worldedit.function.pattern.Pattern
 import com.sk89q.worldedit.math.BlockVector3
 import com.sk89q.worldedit.regions.CuboidRegion
 import com.sk89q.worldedit.regions.Region
@@ -34,7 +40,7 @@ object Util {
     }
 
     fun clearDungeon(world: World) {
-        val cube = CuboidRegion(BukkitWorld(world), BlockVector3.at(-200,-16,-200), BlockVector3.at(200,-1,200))
-        NullExtent().setBlocks(cube as Region,BaseBlock(BlockState(BlockTypes.AIR,0,0)))
+        val cube = setOf<BlockVector3>(BlockVector3.at(-300,-16,-300),BlockVector3.at(300,-1,300))
+        WorldEdit.getInstance().newEditSession(BukkitAdapter.adapt(world)).setBlocks(cube,BlockState(BlockTypes.AIR,0,0))
     }
 }
