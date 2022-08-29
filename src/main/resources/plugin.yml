@@ -19,3 +19,7 @@ commands:
   summonrelic:
     description: test
     usage: /summonrelic <relicname>
+
+  spawnseller:
+    description: test
+    usage: /spawnseller
