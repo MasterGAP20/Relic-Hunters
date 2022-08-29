@@ -18,7 +18,6 @@ class CoinsScoreboard : Listener {
     fun onJoin(event: PlayerJoinEvent) {
         map[event.player] = 0
         createBoard(event.player)
-        event.player.bedSpawnLocation = Location(event.player.world, 0.0, 2.0, 0.0)
     }
 
     companion object {
