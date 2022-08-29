@@ -4,6 +4,7 @@ import com.mastergap.relicshunter.Msg
 import com.mastergap.relicshunter.dungeon.Generator
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
+import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.command.Command
