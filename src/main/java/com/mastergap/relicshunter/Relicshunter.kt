@@ -1,6 +1,7 @@
 package com.mastergap.relicshunter
 
 import com.mastergap.relicshunter.commands.*
+import com.mastergap.relicshunter.minigame.BreadListener
 import com.mastergap.relicshunter.minigame.CoinsScoreboard
 import com.mastergap.relicshunter.minigame.SellNPC
 import com.mastergap.relicshunter.minigame.StartGame
@@ -19,6 +20,7 @@ class Relicshunter : JavaPlugin() {
         server.pluginManager.registerEvents(AbilityListener,this)
         server.pluginManager.registerEvents(SellNPC(),this)
         server.pluginManager.registerEvents(CoinsScoreboard(),this)
+        server.pluginManager.registerEvents(BreadListener,this)
         Relics.init()
     }
 

@@ -1,5 +1,6 @@
 package com.mastergap.relicshunter.minigame
 
+import com.mastergap.relicshunter.Msg
 import com.mastergap.relicshunter.dungeon.Generator
 import org.bukkit.Bukkit
 import org.bukkit.Location
@@ -9,6 +10,10 @@ import org.bukkit.command.CommandSender
 
 class EndGame : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if(!sender.hasPermission("admin")) {
+            Msg.send(sender, "no perms")
+            return true
+        }
         val sb = Bukkit.getScoreboardManager().mainScoreboard
         var teamname = ""
         var coinsTeam1 = 0

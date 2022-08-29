@@ -28,7 +28,7 @@ class SellNPC : Listener {
                 CoinsScoreboard.map[player] = CoinsScoreboard.map[player]!! + value
                 CoinsScoreboard.createBoard(player)
                 item.subtract()
-                player.world.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP,1.0f,1.0f)
+                player.world.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP,0.5f,1.0f)
                 Msg.send(player,"${ChatColor.GREEN}Sold for $value coins")
             }
         }

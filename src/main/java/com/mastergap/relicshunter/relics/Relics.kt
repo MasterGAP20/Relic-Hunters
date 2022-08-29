@@ -31,8 +31,10 @@ object Relics {
     val archangelSwordLore = Component.text("Shoots a jet of fire, like a flamethrower.", style)
     val coolLookingRock = ItemStack(Material.WOODEN_SWORD, 1)
     val coolLookingRockLore = Component.text("It definitely can hurt someone.", style)
+    val neptuneTrident = ItemStack(Material.TRIDENT, 1)
+    val neptuneTridentLore = Component.text("Holding it makes you faster in water. Very loyal to its user.", style)
 
-    val relics = listOf(masterSword, khopesh, sharpStick, archangelSword, coolLookingRock)
+    val relics = listOf(masterSword, khopesh, sharpStick, archangelSword, coolLookingRock, neptuneTrident)
 
     fun init(){
         createRelicSword("Master Sword", masterSwordLore, 10.0, 40, 1.6, "masterSword", masterSword, 1)
@@ -40,6 +42,7 @@ object Relics {
         createRelicSword("Sharp Stick", sharpStickLore,3.0,1,1.6, "sharpSitck", sharpStick, 3)
         createRelicSword("Archangel's Blade", archangelSwordLore,6.0,50,1.6, "archangelBlade", archangelSword, 4)
         createRelicSword("A cool lookin' rock", coolLookingRockLore, 9.0, 30, 0.8, "coolLookingRock", coolLookingRock, 5)
+        createRelicSword("Neptune's Trident", neptuneTridentLore, 10.0, 60, 1.0, "neptuneTrident", neptuneTrident, 1)
     }
 
     private fun createRelicSword(name: String, lore: Component, dmg: Double, uses: Int, speed: Double, type: String, item: ItemStack, custommodeldata: Int){
