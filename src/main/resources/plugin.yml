@@ -23,3 +23,7 @@ commands:
   spawnseller:
     description: test
     usage: /spawnseller
+
+  starthunt:
+    description: test
+    usage: /starthunt

@@ -3,6 +3,7 @@ package com.mastergap.relicshunter
 import com.mastergap.relicshunter.commands.*
 import com.mastergap.relicshunter.minigame.CoinsScoreboard
 import com.mastergap.relicshunter.minigame.SellNPC
+import com.mastergap.relicshunter.minigame.StartGame
 import com.mastergap.relicshunter.misc.CommandsTab
 import com.mastergap.relicshunter.misc.CreateData
 import com.mastergap.relicshunter.relics.AbilityListener
@@ -31,6 +32,7 @@ class Relicshunter : JavaPlugin() {
         getCommand("summonrelic")?.setExecutor(SummonRelic())
         getCommand("summonrelic")?.tabCompleter = CommandsTab(this)
         getCommand("spawnseller")?.setExecutor(SpawnSeller())
+        getCommand("starthunt")?.setExecutor(StartGame())
     }
 
     override fun onDisable() {
