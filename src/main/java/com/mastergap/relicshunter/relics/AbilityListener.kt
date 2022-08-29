@@ -3,6 +3,7 @@ package com.mastergap.relicshunter.relics
 import org.bukkit.NamespacedKey
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.ItemDespawnEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.persistence.PersistentDataType
@@ -16,6 +17,13 @@ object AbilityListener : org.bukkit.event.Listener{
                 "masterSword"  -> MasterSword().rightClickAction(event)
                 "archangelBlade" -> ArchangelBlade().rightClickAction(event)
             }
+        }
+    }
+
+    @EventHandler
+    fun noDespawn(event: ItemDespawnEvent) {
+        if(event.entity.itemStack.itemMeta?.persistentDataContainer?.has(NamespacedKey("mastergap","weapons"))==true) {
+            event.isCancelled = true
         }
     }
 }

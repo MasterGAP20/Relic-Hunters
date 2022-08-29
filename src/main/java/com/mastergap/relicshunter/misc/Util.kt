@@ -1,6 +1,7 @@
 package com.mastergap.relicshunter.misc
 
 import com.github.shynixn.structureblocklib.api.bukkit.StructureBlockLibApi
+import com.mastergap.relicshunter.relics.Relics
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.plugin.Plugin
@@ -19,5 +20,7 @@ object Util {
             .onResult { e: Void? ->
                 plugin.logger.log(Level.INFO, "Loaded structure '$name'.")
             }
+        var relic = (0..20).random()
+        if(relic > 18) world.dropItem(Location(world,sx+8.5,sy+4,sz+8.5), Relics.relics.random())
     }
 }

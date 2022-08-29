@@ -21,23 +21,28 @@ object Relics {
     val style = Style.style(TextColor.fromHexString("#8182d0"),TextDecoration.ITALIC.withState(false))
     val style2 = Style.style(TextColor.fromHexString("#6364a8"),TextDecoration.ITALIC.withState(false))
 
-    val masterSword = ItemStack(Material.DIAMOND_SWORD,1)
+    val masterSword = ItemStack(Material.WOODEN_SWORD,1)
     val masterSwordLore = Component.text("Attacking will shoot a wave of energy.", style)
-    val khopesh = ItemStack(Material.GOLDEN_SWORD,1)
+    val khopesh = ItemStack(Material.WOODEN_SWORD,1)
     val khopeshLore = Component.text("Just a regular golden sword. Yep, nothing special.", style)
     val sharpStick = ItemStack(Material.WOODEN_SWORD,1)
     val sharpStickLore = Component.text("Useless.", style)
-    val archangelSword = ItemStack(Material.NETHERITE_SWORD,1)
+    val archangelSword = ItemStack(Material.WOODEN_SWORD,1)
     val archangelSwordLore = Component.text("Shoots a jet of fire, like a flamethrower.", style)
+    val coolLookingRock = ItemStack(Material.WOODEN_SWORD, 1)
+    val coolLookingRockLore = Component.text("It definitely can hurt someone.", style)
+
+    val relics = listOf(masterSword, khopesh, sharpStick, archangelSword, coolLookingRock)
 
     fun init(){
-        createRelicSword("Master Sword", masterSwordLore, 10.0, 40, 1.6, "masterSword", masterSword)
-        createRelicSword("Khopesh", khopeshLore,4.0,15,1.6, "khopesh", khopesh)
-        createRelicSword("Sharp Stick", sharpStickLore,3.0,1,1.6, "sharpSitck", sharpStick)
-        createRelicSword("Archangel's Blade", archangelSwordLore,6.0,50,1.6, "archangelBlade", archangelSword)
+        createRelicSword("Master Sword", masterSwordLore, 10.0, 40, 1.6, "masterSword", masterSword, 1)
+        createRelicSword("Khopesh", khopeshLore,4.0,15,1.6, "khopesh", khopesh, 2)
+        createRelicSword("Sharp Stick", sharpStickLore,3.0,1,1.6, "sharpSitck", sharpStick, 3)
+        createRelicSword("Archangel's Blade", archangelSwordLore,6.0,50,1.6, "archangelBlade", archangelSword, 4)
+        createRelicSword("A cool lookin' rock", coolLookingRockLore, 9.0, 30, 0.8, "coolLookingRock", coolLookingRock, 5)
     }
 
-    private fun createRelicSword(name: String, lore: Component, dmg: Double, uses: Int, speed: Double, type: String, item: ItemStack){
+    private fun createRelicSword(name: String, lore: Component, dmg: Double, uses: Int, speed: Double, type: String, item: ItemStack, custommodeldata: Int){
         val relicMeta = item.itemMeta
         setDamage(dmg,relicMeta)
         setAtkSpeed(speed,relicMeta)
@@ -51,7 +56,8 @@ object Relics {
             Component.text("  Attack Speed: $speed",style2)
         ))
         relicMeta.persistentDataContainer.set(NamespacedKey("mastergap","weapons"), PersistentDataType.STRING, type)
-        relicMeta.addEnchant(Enchantment.OXYGEN,1,true)
+        //relicMeta.addEnchant(Enchantment.OXYGEN,1,true)
+        relicMeta.setCustomModelData(custommodeldata)
         if(name == "Archangel's Blade"){
             relicMeta.addEnchant(Enchantment.FIRE_ASPECT,1,true)
         }

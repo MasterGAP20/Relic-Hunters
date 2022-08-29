@@ -24,6 +24,7 @@ class SummonRelic : CommandExecutor {
             "Khopesh" -> world.dropItem(player.location,Relics.khopesh)
             "SharpStick" -> world.dropItem(player.location,Relics.sharpStick)
             "ArchangelBlade" -> world.dropItem(player.location,Relics.archangelSword)
+            "CoolLookingRock" -> world.dropItem(player.location,Relics.coolLookingRock)
         }
 
         return true
