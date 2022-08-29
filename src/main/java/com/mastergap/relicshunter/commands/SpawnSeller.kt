@@ -24,7 +24,9 @@ class SpawnSeller : CommandExecutor{
         val seller = player.world.spawnEntity(location,EntityType.VILLAGER) as LivingEntity
         seller.isInvulnerable = true
         seller.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20000000,255))
-        seller.customName(Component.text("Relic Expert", Style.style(TextColor.fromHexString("#ffbf2b"), TextDecoration.ITALIC.withState(false))))
+        seller.customName(Component.text("Relic Expert", Style.style(TextColor.fromHexString("#ffbf2b"))))
+        seller.isCustomNameVisible = true
+        seller.addScoreboardTag("seller")
         return true
     }
 }
