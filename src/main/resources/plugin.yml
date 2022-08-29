@@ -35,3 +35,7 @@ commands:
   starthunt:
     description: test
     usage: /starthunt
+
+  endhunt:
+    description: test
+    usage: /endhunt
