@@ -39,3 +39,7 @@ commands:
   endhunt:
     description: test
     usage: /endhunt
+
+  cleardungeon:
+    description: test
+    usage: /cleardungeon

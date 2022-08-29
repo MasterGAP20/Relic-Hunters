@@ -39,6 +39,7 @@ class Relicshunter : JavaPlugin() {
         getCommand("spawnsurface")?.setExecutor(SpawnSurface())
         getCommand("starthunt")?.setExecutor(StartGame())
         getCommand("endhunt")?.setExecutor(EndGame())
+        getCommand("cleardungeon").setExecutor(ClearDungeonCommand())
     }
 
     override fun onDisable() {

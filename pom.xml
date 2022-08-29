@@ -133,12 +133,12 @@
             <artifactId>FastAsyncWorldEdit-Bukkit</artifactId>
             <version>2.4.4</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>FastAsyncWorldEdit-Core</artifactId>
-                    <groupId>*</groupId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.fastasyncworldedit</groupId>
+            <artifactId>FastAsyncWorldEdit-Core</artifactId>
+            <version>2.4.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
