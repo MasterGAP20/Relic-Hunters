@@ -22,6 +22,6 @@ object Util {
                 plugin.logger.log(Level.INFO, "Loaded structure '$name'.")
             }
         var relic = (0..20).random()
-        if(relic > 18) world.dropItem(Location(world,sx+8.5,sy+4,sz+8.5), Relics.relics.random())
+        if(relic > 17) world.dropItem(Location(world,sx+8.5,sy+4,sz+8.5), Relics.relics.random())
     }
 }

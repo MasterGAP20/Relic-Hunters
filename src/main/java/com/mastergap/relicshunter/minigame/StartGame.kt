@@ -5,9 +5,11 @@ import com.mastergap.relicshunter.dungeon.Generator
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Location
+import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.inventory.ItemStack
 import org.bukkit.scoreboard.Team
 
 class StartGame : CommandExecutor {
@@ -56,6 +58,7 @@ class StartGame : CommandExecutor {
                         c?.z?.plus(Generator.team1Room.z) ?: 0.0
                     )
                     player.teleport(location)
+                    player.inventory.addItem(ItemStack(Material.BREAD, 32))
                 }
                 if(teamname == "team2"){
                     location = Location(player.world,
@@ -64,6 +67,7 @@ class StartGame : CommandExecutor {
                         c?.z?.plus(Generator.team2Room.z) ?: 0.0
                     )
                     player.teleport(location)
+                    player.inventory.addItem(ItemStack(Material.BREAD, 32))
                 }
             }
         }

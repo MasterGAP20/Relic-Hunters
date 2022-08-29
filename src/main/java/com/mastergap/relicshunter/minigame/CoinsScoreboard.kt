@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextColor
 import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Location
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -17,6 +18,7 @@ class CoinsScoreboard : Listener {
     fun onJoin(event: PlayerJoinEvent) {
         map[event.player] = 0
         createBoard(event.player)
+        event.player.bedSpawnLocation = Location(event.player.world, 0.0, 2.0, 0.0)
     }
 
     companion object {
