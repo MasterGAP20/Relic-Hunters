@@ -2,6 +2,7 @@ package com.mastergap.relicshunter.dungeon
 
 import com.mastergap.relicshunter.misc.Util
 import org.bukkit.Bukkit
+import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -12,7 +13,14 @@ import kotlin.time.measureTime
 
 object Generator {
     val roomNames = listOf("e","es","esw","ew","n","ne","nes","nesw","new","ns","nsw","nw","s","sw","w")
+    var team1Room = Room(0.0,0.0,false)
+    var team2Room = Room(0.0,0.0,false)
+    var initialCoords: Location? = null
+    var dungeonGenerated = false
+    var oneLift = false
     fun generate(sx: Double, sy: Double, sz: Double, roomCount: Int, theme: String, world: World, plugin: Plugin, sender: Player) {
+        oneLift = false
+        dungeonGenerated = false
         val startTime = measureTimeMillis {
             val path = generatePath(roomCount)
             path.forEach{
@@ -23,12 +31,24 @@ object Generator {
                 sender.sendMessage(path.indexOf(it).toString())
                 sender.sendMessage(it.getAdjacent(path).toString())
                 var room = possibleRooms.random()
+                var lift = (0..20).random()
                 it.isCorridor = Random.nextBoolean()
+
+                if(room=="nesw" && (lift > 18 || (path.indexOf(it) in (25 until path.indices.last-25) && !oneLift))) {
+                    it.isCorridor = false
+                    room="lift"
+                    oneLift = true
+                }
+
                 if(it.isCorridor) room = "corridors/$room"
                 createRoom(plugin,world,sx+it.x,sy,sz+it.z,theme,room)
             }
+            initialCoords = Location(world,sx,sy,sz)
+            team1Room = path.first().add(8.5,7.5)
+            team2Room = path.last().add(8.5,7.5)
         }
         sender.sendMessage("Elapsed time: $startTime")
+        dungeonGenerated = true
     }
 
     private fun createRoom(plugin: Plugin,world: World,sx: Double,sy: Double,sz: Double,theme: String,name: String) {

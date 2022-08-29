@@ -13,6 +13,7 @@ object Util {
         StructureBlockLibApi.INSTANCE
             .loadStructure(plugin)
             .at(Location(world, sx, sy, sz))
+            .includeEntities(true)
             .loadFromPath(path)
             .onException { e: Throwable? ->
                 plugin.logger.log(Level.SEVERE, "Failed to load structure.", e)

@@ -16,6 +16,10 @@ class StructureScanCommand(
     private var plugin: Plugin
 ) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if(!sender.hasPermission("admin")) {
+            Msg.send(sender, "no perms")
+            return true
+        }
         val player = sender as Player
 
         if(args.size < 6){
@@ -56,6 +60,7 @@ class StructureScanCommand(
         StructureBlockLibApi.INSTANCE
             .saveStructure(plugin)
             .at(Location(Bukkit.getWorld("world"), cx1.toDouble(), cy1.toDouble(), cz1.toDouble()))
+            .includeEntities(true)
             .sizeX(sizeX)
             .sizeY(sizeY)
             .sizeZ(sizeZ)

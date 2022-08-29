@@ -1,5 +1,6 @@
 package com.mastergap.relicshunter.misc
 
+import com.mastergap.relicshunter.Msg
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
@@ -16,6 +17,9 @@ class CommandsTab(
         label: String,
         args: Array<out String>
     ): MutableList<String>? {
+        if(!sender.hasPermission("admin")) {
+            return mutableListOf()
+        }
         if(command.name == "structurescan"){
             if(args.size == 1 || args.size == 4){
                 val cords = ArrayList<String>()

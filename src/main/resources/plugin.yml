@@ -24,6 +24,14 @@ commands:
     description: test
     usage: /spawnseller
 
+  spawnreturn:
+    description: test
+    usage: /spawnreturn
+
+  spawnsurface:
+    description: test
+    usage: /spawnsurface
+
   starthunt:
     description: test
     usage: /starthunt

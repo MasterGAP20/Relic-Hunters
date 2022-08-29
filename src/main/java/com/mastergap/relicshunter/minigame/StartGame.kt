@@ -1,6 +1,7 @@
 package com.mastergap.relicshunter.minigame
 
 import com.mastergap.relicshunter.Msg
+import com.mastergap.relicshunter.dungeon.Generator
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Location
@@ -10,7 +11,6 @@ import org.bukkit.command.CommandSender
 import org.bukkit.scoreboard.Team
 
 class StartGame : CommandExecutor {
-
     fun canStart(): Boolean{
         var team1Members = 0
         var team2Members = 0
@@ -32,27 +32,37 @@ class StartGame : CommandExecutor {
                 teamname = ""
             }
         }
-        if(team1Members == team2Members && team1Members > 0){
+        if(team1Members == team2Members && team1Members > 0 && Generator.dungeonGenerated){
             return true
         }
         return false
     }
 
     fun movePlayers(){
+        val c = Generator.initialCoords
         val sb = Bukkit.getScoreboardManager().mainScoreboard
         var teamname = ""
         for(player in Bukkit.getOnlinePlayers()){
+            player.sendMessage(c.toString())
             var location: Location
             for(team in sb.teams){
                 if(team.hasEntry(player.name)){
                     teamname = team.name
                 }
                 if(teamname == "team1"){
-                    location = Location(player.world,-70.0, 3.0, 0.0,)
+                    location = Location(player.world,
+                        c?.x?.plus(Generator.team1Room.x) ?: 0.0,
+                        c?.y?.plus(3.5) ?: 0.0,
+                        c?.z?.plus(Generator.team1Room.z) ?: 0.0
+                    )
                     player.teleport(location)
                 }
                 if(teamname == "team2"){
-                    location = Location(player.world,70.0, 3.0, 0.0,)
+                    location = Location(player.world,
+                        c?.x?.plus(Generator.team2Room.x) ?: 0.0,
+                        c?.y?.plus(3.5) ?: 0.0,
+                        c?.z?.plus(Generator.team2Room.z) ?: 0.0
+                    )
                     player.teleport(location)
                 }
             }
@@ -67,6 +77,10 @@ class StartGame : CommandExecutor {
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if(!sender.hasPermission("admin")) {
+            Msg.send(sender, "no perms")
+            return true
+        }
         if(canStart()){
             resetCoins()
             movePlayers()

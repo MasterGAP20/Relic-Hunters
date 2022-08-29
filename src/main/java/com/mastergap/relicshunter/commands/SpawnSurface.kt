@@ -16,7 +16,7 @@ import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class SpawnSeller : CommandExecutor{
+class SpawnSurface : CommandExecutor{
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if(!sender.hasPermission("admin")) {
@@ -29,10 +29,11 @@ class SpawnSeller : CommandExecutor{
         val seller = player.world.spawnEntity(location,EntityType.VILLAGER) as LivingEntity
         seller.isInvulnerable = true
         seller.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,20000000,255))
-        seller.customName(Component.text("Relic Expert", Style.style(TextColor.fromHexString("#ffbf2b"))))
-        seller.isCustomNameVisible = true
-        seller.addScoreboardTag("seller")
+        seller.customName(Component.text("To the Surface", Style.style(TextColor.fromHexString("#ffbf2b"))))
+        seller.isCustomNameVisible = false
+        seller.addScoreboardTag("surface")
         seller.setAI(false)
+        seller.isSilent = true
         return true
     }
 }

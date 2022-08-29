@@ -11,6 +11,10 @@ import org.bukkit.entity.Player
 
 class SummonRelic : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if(!sender.hasPermission("admin")) {
+            Msg.send(sender, "no perms")
+            return true
+        }
         val player = sender as Player
         val world = player.world
 

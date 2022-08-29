@@ -32,6 +32,8 @@ class Relicshunter : JavaPlugin() {
         getCommand("summonrelic")?.setExecutor(SummonRelic())
         getCommand("summonrelic")?.tabCompleter = CommandsTab(this)
         getCommand("spawnseller")?.setExecutor(SpawnSeller())
+        getCommand("spawnreturn")?.setExecutor(SpawnReturn())
+        getCommand("spawnsurface")?.setExecutor(SpawnSurface())
         getCommand("starthunt")?.setExecutor(StartGame())
     }
 

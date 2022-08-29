@@ -25,7 +25,7 @@ class CoinsScoreboard : Listener {
          fun createBoard(player: Player){
             val manager = Bukkit.getScoreboardManager()
             val board = manager.newScoreboard
-            val obj = board.registerNewObjective("CoinScoreboard", Criteria.DUMMY, Component.text("Coins", Style.style(
+            val obj = board.registerNewObjective("CoinScoreboard", "DUMMY", Component.text("Coins", Style.style(
                 TextColor.fromHexString("#ffbf2b"), TextDecoration.ITALIC.withState(false))))
             obj.displaySlot = DisplaySlot.SIDEBAR
             val score = obj.getScore("${ChatColor.YELLOW} Coins: $totalcoins")
